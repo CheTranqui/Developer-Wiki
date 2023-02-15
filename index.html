@@ -173,6 +173,9 @@
                     <p>
                         One last thing to note: testing IsMyDogOlder is a very simple matter since the method is public. The GetOldestDog method, however, is not so simple. Internal is an access type that is accessible to the same assembly. Not only that, but one may set their project's AssemblyInfo.cs file to make <span class="code">[assembly: InternalsVisibleTo("another assembly")]</span>. That other assembly is generally the test project, making this otherwise private method available for your test project to access for testing purposes.
                     </p>
+                    <p>
+                        Recommended test utilities include: <a class=inline-link href="https://www.youtube.com/watch?v=ub3P8c87cwk">XUnit</a>, <a class="inline-link" href="https://nsubstitute.github.io/help/getting-started/">NSubstitute</a>, <a class="inline-link" href="https://docs.fluentvalidation.net/en/latest/index.html">FluentValidation</a> and <a class="inline-link" href="https://fluentassertions.com/introduction">FluentAssertions</a></a>. See the <a class="inline-link" href="./testing/testing.html">Testing</a> page for more.
+                    </p>
                 </article>
             </section>
         </main>
