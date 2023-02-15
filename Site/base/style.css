@@ -1,12 +1,18 @@
 :root{
     --colors-bg: white;
-    --colors-bg-highlight: gray;
+    --colors-bg-highlight: darkgray;
+    --colors-bg-alternate: darkslategray;
     --colors-font: black;
-    --colors-font-emphasis: hotpink;
+    --colors-font-emphasis: orange;
+    --fontsize-small: 0.75rem;
     --fontsize-regular: 1.25rem;
     --fontsize-large: 1.5rem;
     --fontsize-xlarge: 1.75rem;
     --fontsize-huge: 2rem;
+}
+
+body{
+    margin-bottom: 12rem;
 }
 
 .header-nav{
@@ -32,17 +38,75 @@
     font-size: var(--fontsize-xlarge);
 }
 
+main{
+    width: 95%;
+    margin: auto;
+}
+
 .page-menu{
-    position: absolute;
-    top: 6rem;
-    right: 10%;
+    position: fixed;
+    bottom: 2%;
+    right: 1%;
+    z-index: 2;
+    color: var(--colors-bg);
+    background-color: var(--colors-bg-alternate);
+    padding: 1rem;
 }
 
 .page-menu-h1{
-    margin: 0.5rem 0;
+    margin: 0;
+}
+
+.page-menu ol{
+    margin: 0 0 0 2rem;
+    padding: 0;
 }
 
 .page-menu-links{
-    margin: 0 0 0 0.5rem;
+    margin: 0 1rem 0 0.5rem;
     font-size: var(--fontsize-regular);
+    color: var(--colors-font-emphasis);
+}
+
+.page-icon{
+    max-width: 10rem;
+}
+
+.item-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.item-article{
+    margin-bottom: 1rem;
+    border-top: solid var(--colors-bg-highlight) 2px;
+}
+
+.item-image-caption{
+    color: var(--colors-bg-alternate);
+    font-size: var(--fontsize-small);
+}
+
+.code{
+    color: var(--colors-font-emphasis);
+    background-color: var(--colors-bg-alternate);
+}
+
+.inline-link{
+    color: var(--colors-font);
+    text-decoration: underline var(--colors-font-emphasis);
+}
+
+#ienumerable-image{
+    height: 1.25rem;
+    max-width: 100%;
+}
+
+#linq-sql-image{
+    height: 5rem;
+}
+
+#testability-dogs-image{
+    height: 10rem;
 }
