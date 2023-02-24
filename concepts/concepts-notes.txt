@@ -1,0 +1,6 @@
+Brownfield Development
+DRY
+Design Patterns
+Feature Flags
+Generics
+Caching

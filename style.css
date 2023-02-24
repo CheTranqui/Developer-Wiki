@@ -107,6 +107,10 @@ main{
     height: 5rem;
 }
 
+#object-instantiation-image{
+    height: 12rem;
+}
+
 #testability-dogs-image{
     height: 10rem;
 }

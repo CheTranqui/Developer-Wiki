@@ -64,7 +64,10 @@
                         <a class="page-menu-links" href="#csharp-item4">LINQ</a>
                     </li>
                     <li>
-                        <a class="page-menu-links" href="#csharp-item5">Testability</a>
+                        <a class="page-menu-links" href="#csharp-item5">Object Instantiation</a>
+                    </li>
+                    <li>
+                        <a class="page-menu-links" href="#csharp-item6">Testability</a>
                     </li>
                 </ol>
             </section>
@@ -128,6 +131,20 @@
                         All LINQ statements return IEnumerables. I feel like they might as well just return List, but there must be a difference under the hood. Because of the prevalence of LINQ in C# IEnumerables are very common and thus generally preferred when working with data. They're also immutable, which is a valuable property when doing data manipulation, allowing you to maintain the fidelity of the source while extracting what you need.
                     </p>
                 </article>
+                <article class="item-article" id="csharp-item3">
+                    <h2>
+                        Object Instantiation
+                    </h2>
+                    <p>
+                        Sometimes it is preferable to build a specific constructor for a more complex object that involves various sub-types... but for simple objects it is preferable to simply declare it as a basic class with parameters (or maybe even as a record) without an explicit constructor. Doing so allows for the instantiation of any object (Lists and Dictionaries included) to be done via a simple <span class="code">new Type(){MyParameter = myValue}</span> syntax.
+                    </p>
+                    <figure>
+                        <img class="item-image" id="object-instantiation-image" src="./images/object-instantiation.jpg">
+                        <figcaption class="item-image-caption">
+                            Object Initialization Syntax
+                        </figcaption>
+                    </figure>
+                </article>
                 <article class="item-article" id="csharp-item4">
                     <h2>
                         LINQ
@@ -151,7 +168,7 @@
                         You may find the keywords on the <a class="inline-link" href="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/query-expression-syntax-for-standard-query-operators">MS documentation site</a> as well. I don't have much experience with this type of syntax, preferring the method-based query.
                     </p>
                 </article>
-                <article class="item-article" id="csharp-item5">
+                <article class="item-article" id="csharp-item6">
                     <h2>
                         Writing Code That Is Easy To Test
                     </h2>
