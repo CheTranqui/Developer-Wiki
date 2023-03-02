@@ -1,4 +1,4 @@
-﻿﻿
+﻿
 <!DOCTYPE html>
 <!--
     Author: Chaz Peterson
@@ -52,45 +52,68 @@
                 </h2>
                 <ol>
                     <li>
-                        <a class="page-menu-links" href="#csharp-item1">Comparisons</a>
+                        <a class="page-menu-links" href="#comparison">Comparisons</a>
                     </li>
                     <li>
-                        <a class="page-menu-links" href="#csharp-item2">Nulls</a>
+                        <a class="page-menu-links" href="#switch">Switch Expressions</a>
                     </li>
                     <li>
-                        <a class="page-menu-links" href="#csharp-item3">IEnumerables</a>
+                        <a class="page-menu-links" href="#null">Nulls</a>
                     </li>
                     <li>
-                        <a class="page-menu-links" href="#csharp-item4">LINQ</a>
+                        <a class="page-menu-links" href="#ienumerable">IEnumerables</a>
                     </li>
                     <li>
-                        <a class="page-menu-links" href="#csharp-item5">Object Instantiation</a>
+                        <a class="page-menu-links" href="#linq">LINQ</a>
                     </li>
                     <li>
-                        <a class="page-menu-links" href="#csharp-item6">Testability</a>
+                        <a class="page-menu-links" href="#object">Object Instantiation</a>
+                    </li>
+                    <li>
+                        <a class="page-menu-links" href="#testability">Testability</a>
+                    </li>
+                    <li>
+                        <a class="page-menu-links" href="#multithreading">Multithreading</a>
                     </li>
                 </ol>
             </section>
             <img class="page-icon" src="./images/csharp-icon.png"/>
             <section class="item-section" >
-                <article class="item-article" id="csharp-item1">
+                <article class="item-article" id="comparison">
                     <h2>
                         Comparisons
                     </h2>
                     <p>
-                        The easiest way to do a comparison is via the <span class="code">==</span> or <span class="code">!=</span> operators. This works for any primative type, which is to say for anything number-based. Comparisons involving strings or other objects are more involved.
+                        The easiest way to do a comparison is via the <code class="code">==</code> or <code class="code">!=</code> operators. This works for any primative type, which is to say for anything number-based. Comparisons involving strings or other objects are more involved.
                     </p>
                     <p>
-                        String comparisons should always be done using the string extension method <span class="code">.Equals</span>. Depending upon the scenario, it's often a best practice to do something like this: <span class="code">string1.Equals(string2, StringComparison.OrdinalIgnoreCase)</span> so that the comparison removes concerns about casing. Mind you, this solution does have its faults as case is truly meaningful in various non-western languages.
+                        String comparisons should always be done using the string extension method <code class="code">.Equals</code>. Depending upon the scenario, it's often a best practice to do something like this: <code class="code">string1.Equals(string2, StringComparison.OrdinalIgnoreCase)</code> so that the comparison removes concerns about casing. Mind you, this solution does have its faults as case is truly meaningful in various non-western languages.
                     </p>
                     <p>
-                        Booleans have their own special uses in that a simple <span class="code">if (myBoolean)</span> or <span class="code">if (!myBoolean)</span> suffices. Though use of the <a class="inline-link" href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-operator">ternary operator</a> is common in front end development, in back end it is much less so.
+                        Booleans have their own special uses in that a simple <code class="code">if (myBoolean)</code> or <code class="code">if (!myBoolean)</code> suffices. Though use of the <a class="inline-link" href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-operator">ternary operator</a> is common in front end development, in back end it is much less so.
                     </p>
                     <p>
                         Comparing objects gets more complex and requires an override of the virtual method provided by "IEquatable" called "Equals". In essence, you can only compare one field with one other field at any given time, so comparing two objects means validating each field within that object is identical or similar verification. Here's <a class="inline-link" href="https://stackoverflow.com/questions/10454519/best-way-to-compare-two-complex-objects">a great StackOverflow answer</a> on the topic.
                     </p>
                 </article>
-                <article class="item-article" id="csharp-item2">
+                <article class="item-article" id="switch">
+                    <h2>
+                        Switch Expressions
+                    </h2>
+                    <p>
+                        A typical switch statement involves the <code class="code">switch (variable)</code> declaration. Switch Expressions are new in 
+                    </p>
+                    <figure>
+                        <img class="item-image" src="./images/nullability-warning.jpg">
+                        <figcaption class="item-image-caption">
+                            Dereference of a possibly null reference = Microsoft speak for "it could be null, bro"
+                        </figcaption>
+                    </figure>
+                    <p>
+                        Nullability in C# is denoted by the <code class="code">?</code>. <code class="code">int?</code> beyond being an int32 is also nullable. It is not common for primatives to be made nullable (the numeric ones default to a value equal to 0, bool defaults to false which is 0 in binary). Getting rid of nullability is important for clean code execution.
+                    </p>
+                </article>
+                <article class="item-article" id="null">
                     <h2>
                         Handling Nullable Reference Types
                     </h2>
@@ -104,22 +127,22 @@
                         </figcaption>
                     </figure>
                     <p>
-                        Nullability in C# is denoted by the <span class="code">?</span>. <span class="code">int?</span> beyond being an int32 is also nullable. It is not common for primatives to be made nullable (the numeric ones default to a value equal to 0, bool defaults to false which is 0 in binary). Getting rid of nullability is important for clean code execution.
+                        Nullability in C# is denoted by the <code class="code">?</code>. <code class="code">int?</code> beyond being an int32 is also nullable. It is not common for primatives to be made nullable (the numeric ones default to a value equal to 0, bool defaults to false which is 0 in binary). Getting rid of nullability is important for clean code execution.
                     </p>
                     <p>
-                        The simplest comparison one can make is <span class="code">xyz == null</span> (or !=). This works in every circumstance. Another way is called the <a class="inline-link" href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/null-coalescing-operator">null coalescing operator</a>. It has two varieties: <span class="code">return xyz ?? optionIfXyzIsNull</span> where "xyz" would be evaluated and returned if it is not null, but if it is null then optionIfXyzIsNull would be returned. The other variety is the <span class="code">xyz ??= optionIfXyzIsNull</span> where if xyz is not null it maintains its value, whereas if it is null then whatever default you have optionIfXyzIsNull set to will then be assigned to xyz.
+                        The simplest comparison one can make is <code class="code">xyz == null</code> (or !=). This works in every circumstance. Another way is called the <a class="inline-link" href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/null-coalescing-operator">null coalescing operator</a>. It has two varieties: <code class="code">return xyz ?? optionIfXyzIsNull</code> where "xyz" would be evaluated and returned if it is not null, but if it is null then optionIfXyzIsNull would be returned. The other variety is the <code class="code">xyz ??= optionIfXyzIsNull</code> where if xyz is not null it maintains its value, whereas if it is null then whatever default you have optionIfXyzIsNull set to will then be assigned to xyz.
                     </p>
                     <p>
                         The final scenario is how to handle null checks within LINQ statements. They're a pain. I've found the best solution to involve the use of the basic ? operator along with the ?? and a default return, for instance:
-                        <span class="code">firstName = customers.FirstOrDefault(c => c.Name.Equals(customerName, StringComparison.OrdinalIgnoreCase))?.FirstName ?? "New User"</span>. Were that just a <span class="code">.First()</span> it could fail with an exception if none is found, but <span class="code">.FirstOrDefault()</span> will return null if it fails, as such we mark its result as being nullable. Because of this, we also have to handle it and thus add the null coalescing operator with a default to fall back to in that scenario. The result is that "firstName" is not nullable as the result of this function will always be assigning a proper value to firstName, even if it is only "New User".
+                        <code class="code">firstName = customers.FirstOrDefault(c => c.Name.Equals(customerName, StringComparison.OrdinalIgnoreCase))?.FirstName ?? "New User"</code>. Were that just a <code class="code">.First()</code> it could fail with an exception if none is found, but <code class="code">.FirstOrDefault()</code> will return null if it fails, as such we mark its result as being nullable. Because of this, we also have to handle it and thus add the null coalescing operator with a default to fall back to in that scenario. The result is that "firstName" is not nullable as the result of this function will always be assigning a proper value to firstName, even if it is only "New User".
                     </p>
                 </article>
-                <article class="item-article" id="csharp-item3">
+                <article class="item-article" id="ienumerable">
                     <h2>
                         IEnumerables
                     </h2>
                     <p>
-                        All collections in C# such as Lists, Dictionaries, and Arrays, are IEnumerables. This means that they inherit from the IEnumerable class. Arrays and Lists have a <span class="code">.Sort()</span> method, but because of the dual nature of Dictionaries, it won't know whether you want to sort it based upon the Key or the Value... and if your Array or List is of objects instead of numbers or strings, it won't know what to sort by. This is easily solved by using IEnumerable's <span class="code">OrderBy()</span> method such as <span class="code">.OrderBy(x => x.Name)</span>.
+                        All collections in C# such as Lists, Dictionaries, and Arrays, are IEnumerables. This means that they inherit from the IEnumerable class. Arrays and Lists have a <code class="code">.Sort()</code> method, but because of the dual nature of Dictionaries, it won't know whether you want to sort it based upon the Key or the Value... and if your Array or List is of objects instead of numbers or strings, it won't know what to sort by. This is easily solved by using IEnumerable's <code class="code">OrderBy()</code> method such as <code class="code">.OrderBy(x => x.Name)</code>.
                     </p>
                     <figure>
                         <img class="item-image" id="ienumerable-image" src="./images/ienumerable.jpg">
@@ -130,30 +153,34 @@
                     <p>
                         All LINQ statements return IEnumerables. I feel like they might as well just return List, but there must be a difference under the hood. Because of the prevalence of LINQ in C# IEnumerables are very common and thus generally preferred when working with data. They're also immutable, which is a valuable property when doing data manipulation, allowing you to maintain the fidelity of the source while extracting what you need.
                     </p>
-                </article>
-                <article class="item-article" id="csharp-item3">
                     <h2>
-                        Object Instantiation
+                        IEnumerables - Altering Values
                     </h2>
                     <p>
-                        Sometimes it is preferable to build a specific constructor for a more complex object that involves various sub-types... but for simple objects it is preferable to simply declare it as a basic class with parameters (or maybe even as a record) without an explicit constructor. Doing so allows for the instantiation of any object (Lists and Dictionaries included) to be done via a simple <span class="code">new Type(){MyParameter = myValue}</span> syntax.
+                        IEnumerables are immutable so nothing can be added to or removed from it. In order to remove or add items, the variable must be assigned to a new collection such as: <code class="code">dogs = dogs.Where(d => d.Age > 7);</code>. The <code class="code">Where</code> filters out dogs under the age of 7 and returns a new IEnumerable. In order to alter the list, we have to assign it to the results of that calculation.
+                    </p>
+                    <p>
+                        Although it is not possible to alter the contents of an IEnumerable, if the items inside it are complex objects (not strings or any of the other primative types), then they are pass-by-reference. When a pass-by-reference object has its value updated, it's value is updated across the board. As such, you may update their values in a subsequent list and see those results in the original IEnumerable:
                     </p>
                     <figure>
-                        <img class="item-image" id="object-instantiation-image" src="./images/object-instantiation.jpg">
+                        <img class="item-image" id="ienumerable-image2" src="./images/change-ienumerable.jpg">
                         <figcaption class="item-image-caption">
-                            Object Initialization Syntax
+                            all doggos shall henceforth known by the name "Fido"
                         </figcaption>
                     </figure>
+                    <p>
+                        Note that the method in the preceding example has a void return value and doesn't return the subsequent allDogs list. Despite this, printing out the names of each Dog in the IEnumerable&lt;Dog&gt; confirms that the name of each Dog does in fact update to "Fido", despite the name assignment being done while iterating the List&lt;Dog&gt;.
+                    </p>
                 </article>
-                <article class="item-article" id="csharp-item4">
+                <article class="item-article" id="linq">
                     <h2>
                         LINQ
                     </h2>
                     <p>
-                        Though we learned the <span class="code">for (int i = 0; i &#60; object.length; i++)</span> in school, it is not often used in production C# code. This is due to the ease of use, and thus prevalence, of LINQ statements. LINQ comes in two forms: method-based query and query expressions.
+                        Though we learned the <code class="code">for (int i = 0; i &#60; object.length; i++)</code> in school, it is not often used in production C# code. This is due to the ease of use, and thus prevalence, of LINQ statements. LINQ comes in two forms: method-based query and query expressions.
                     </p>
                     <p>
-                        Method-Based Query:  As seen in the IEnumerable section above, chained statements look similar to promises and lambdas in JavaScript. This is the most common way to iterate over a collection of objects. The most commonly used ones are <span class="code">.Where() .Select() .OrderBy() .Any() .All() .Contains() .Count()</span>. The full list of available methods may be found on the <a class="inline-link" href="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/classification-of-standard-query-operators-by-manner-of-execution#classification-table">MS documentation site</a>. Note: it is best-practice that when a query involves more than 2 methods, each method is placed on its own line for legibility's sake.
+                        Method-Based Query:  As seen in the IEnumerable section above, chained statements look similar to promises and lambdas in JavaScript. This is the most common way to iterate over a collection of objects. The most commonly used ones are <code class="code">.Where() .Select() .OrderBy() .Any() .All() .Contains() .Count()</code>. The full list of available methods may be found on the <a class="inline-link" href="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/classification-of-standard-query-operators-by-manner-of-execution#classification-table">MS documentation site</a>. Note: it is best-practice that when a query involves more than 2 methods, each method is placed on its own line for legibility's sake.
                     </p>
                     <p>
                         Query Expressions use actual SQL-like syntax in C# to accomplish the task:
@@ -168,7 +195,21 @@
                         You may find the keywords on the <a class="inline-link" href="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/query-expression-syntax-for-standard-query-operators">MS documentation site</a> as well. I don't have much experience with this type of syntax, preferring the method-based query.
                     </p>
                 </article>
-                <article class="item-article" id="csharp-item6">
+                <article class="item-article" id="object">
+                    <h2>
+                        Object Instantiation
+                    </h2>
+                    <p>
+                        Sometimes it is preferable to build a specific constructor for a more complex object that involves various sub-types... but for simple objects it is preferable to simply declare it as a basic class with parameters (or maybe even as a record) without an explicit constructor. Doing so allows for the instantiation of any object (Lists and Dictionaries included) to be done via a simple <code class="code">new Type(){MyParameter = myValue}</code> syntax.
+                    </p>
+                    <figure>
+                        <img class="item-image" id="object-instantiation-image" src="./images/object-instantiation.jpg">
+                        <figcaption class="item-image-caption">
+                            Object Initialization Syntax
+                        </figcaption>
+                    </figure>
+                </article>
+                <article class="item-article" id="testability">
                     <h2>
                         Writing Code That Is Easy To Test
                     </h2>
@@ -188,10 +229,33 @@
                         In the above example, the GetAllDogs() method is just returning a list and does not need tested. GetOldestDog, however, doesn't just do a LINQ query, it also relies explicitly upon the Dog object having an Age field. As a result, it may be worth testing simply to validate that the field type doesn't change to something that cannot be sorted properly and that it continues to exist by the name Age. Lastly, IsMyDogOlder should absolutely be tested as it relies on a separate list, a different method, and does its own calculation. It'd be easy enough to put all of this inline in the parent method, but doing it this way makes it both easier to test and available for potential reuse in the future.
                     </p>
                     <p>
-                        One last thing to note: testing IsMyDogOlder is a very simple matter since the method is public. The GetOldestDog method, however, is not so simple. Internal is an access type that is accessible to the same assembly. Not only that, but one may set their project's AssemblyInfo.cs file to make <span class="code">[assembly: InternalsVisibleTo("another assembly")]</span>. That other assembly is generally the test project, making this otherwise private method available for your test project to access for testing purposes.
+                        One last thing to note: testing IsMyDogOlder is a very simple matter since the method is public. The GetOldestDog method, however, is not so simple. Internal is an access type that is accessible to the same assembly. Not only that, but one may set their project's AssemblyInfo.cs file to make <code class="code">[assembly: InternalsVisibleTo("another assembly")]</code>. That other assembly is generally the test project, making this otherwise private method available for your test project to access for testing purposes.
                     </p>
                     <p>
                         Recommended test utilities include: <a class=inline-link href="https://www.youtube.com/watch?v=ub3P8c87cwk">XUnit</a>, <a class="inline-link" href="https://nsubstitute.github.io/help/getting-started/">NSubstitute</a>, <a class="inline-link" href="https://docs.fluentvalidation.net/en/latest/index.html">FluentValidation</a> and <a class="inline-link" href="https://fluentassertions.com/introduction">FluentAssertions</a></a>. See the <a class="inline-link" href="./testing/testing.html">Testing</a> page for more.
+                    </p>
+                </article>
+                <article class="item-article" id="multithreading">
+                    <h2>
+                        Multithreading and Concurrency
+                    </h2>
+                    <p>
+                        Multithreading in C# is pretty straight forward. There are several things to consider along the way, however:  1) will you be making alterations to the same object multiple times? 2) should I even bother?
+                    </p>
+                    <p>
+                        <strong>Should I Build In Multithreading:</strong> In modern computing it is generally not necessary. Most hosting scenarios are sufficiently powerful that though it be available, there's no real need to take advantage of multithreading. The cases in which it is of value is when it is a fairly expensive or time consuming process, for instance if you call to an external API multiple times in order to accomplish your greater task then sending all of those calls out at once would allow you to truncate the wait from however many down to just the time it takes to make one call as they happen concurrently.
+                    </p>
+                    <p>
+                        <strong>Handling Object Alterations:</strong> If you are modifying the same object with each iteration (for instance, adding or removing an item from a list) then it suddenly becomes critical that your list is thread-safe. This is generally accomplished with a <code class="code">ConcurrentBag</code> which is <a class="inline-link" href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.concurrent.concurrentbag-1?view=net-7.0">a collection that is designed precisely for this purpose</a>.
+                    </p>
+                    <figure>
+                        <img class="item-image" id="multithreading-image" src="./images/multithreading.jpg">
+                        <figcaption class="item-image-caption">
+                            Dogs in a bag.. not the best idea.
+                        </figcaption>
+                    </figure>
+                    <p>
+                        There is a way to explicitly call out the number of threads to be utilized, which is important to declare in some multithreading approaches. To manage the number of threads, <a class="inline-link" href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.paralleloptions.maxdegreeofparallelism?view=net-7.0">Parallel.MaxDegreeOfParallelism</a> should be incorporated.
                     </p>
                 </article>
             </section>
