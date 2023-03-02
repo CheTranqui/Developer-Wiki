@@ -101,16 +101,16 @@
                         Switch Expressions
                     </h2>
                     <p>
-                        A typical switch statement involves the <code class="code">switch (variable)</code> declaration. Switch Expressions are new in 
+                        A typical switch statement involves the <code class="code">switch (variable)</code> declaration. Switch expressions are more concise and make code more legible if each case will be returning something:
                     </p>
                     <figure>
-                        <img class="item-image" src="./images/nullability-warning.jpg">
+                        <img class="item-image" id="switch-image" src="./images/switch.jpg">
                         <figcaption class="item-image-caption">
-                            Dereference of a possibly null reference = Microsoft speak for "it could be null, bro"
+                            Teaching old dogs new tricks
                         </figcaption>
                     </figure>
                     <p>
-                        Nullability in C# is denoted by the <code class="code">?</code>. <code class="code">int?</code> beyond being an int32 is also nullable. It is not common for primatives to be made nullable (the numeric ones default to a value equal to 0, bool defaults to false which is 0 in binary). Getting rid of nullability is important for clean code execution.
+                        The value in the switch expression is its conciseness. It no longer requires a break statement, with the discard operator <code class="code">_</code> it also handles all cases, even if they're not a precise match for the cases you've declared (<code class="code">default</code> does the same in regular switch statements).
                     </p>
                 </article>
                 <article class="item-article" id="null">

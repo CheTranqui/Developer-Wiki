@@ -107,6 +107,10 @@ main{
     text-decoration: underline var(--colors-font-emphasis);
 }
 
+#switch-image{
+    height: 10rem;
+}
+
 #ienumerable-image{
     height: 1.25rem;
     max-width: 100%;
@@ -129,5 +133,5 @@ main{
 }
 
 #multithreading-image{
-    height: 22rem;
+    height: 24rem;
 }
