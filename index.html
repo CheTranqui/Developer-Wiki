@@ -4,6 +4,7 @@
     Author: Chaz Peterson
     Alias:  CheTranqui
     Purpose:  Notes from my personal dev experience
+    Special Note:  main index.html is actually the C# page
 -->
 <html lang="en">
     <head>
@@ -73,11 +74,14 @@
                         <a class="page-menu-links" href="#testability">Testability</a>
                     </li>
                     <li>
+                        <a class="page-menu-links" href="#extension">Extension Methods</a>
+                    </li>
+                    <li>
                         <a class="page-menu-links" href="#multithreading">Multithreading</a>
                     </li>
                 </ol>
             </section>
-            <img class="page-icon" src="./images/csharp-icon.png"/>
+            <img class="page-icon" src="./images/CSharp/csharp-icon.png"/>
             <section class="item-section" >
                 <article class="item-article" id="comparison">
                     <h2>
@@ -104,13 +108,13 @@
                         A typical switch statement involves the <code class="code">switch (variable)</code> declaration. Switch expressions are more concise and make code more legible if each case will be returning something:
                     </p>
                     <figure>
-                        <img class="item-image" id="switch-image" src="./images/switch.jpg">
+                        <img class="item-image" id="switch-image" src="./images/csharp/switch.jpg">
                         <figcaption class="item-image-caption">
                             Teaching old dogs new tricks
                         </figcaption>
                     </figure>
                     <p>
-                        The value in the switch expression is its conciseness. It no longer requires a break statement, with the discard operator <code class="code">_</code> it also handles all cases, even if they're not a precise match for the cases you've declared (<code class="code">default</code> does the same in regular switch statements).
+                        The value in the switch expression is its conciseness. It no longer requires a break statement, with the discard operator <code class="code">_</code> (underscore) it also handles all cases, even if they're not a precise match for the cases you've declared (<code class="code">default</code> does the same in regular switch statements).
                     </p>
                 </article>
                 <article class="item-article" id="null">
@@ -121,7 +125,7 @@
                         Nulls can be useful. They tell us when an operation failed. In order for an object to not be nullable it must be declared upon instantiation. This means it must be either defined immediately (even if it's just string.Empty), be assigned in that object's constructor, or new with .NET 7, it must be declared as "required" and a part of an incoming API.
                     </p>
                     <figure>
-                        <img class="item-image" src="./images/nullability-warning.jpg">
+                        <img class="item-image" src="./images/csharp/nullability-warning.jpg">
                         <figcaption class="item-image-caption">
                             Dereference of a possibly null reference = Microsoft speak for "it could be null, bro"
                         </figcaption>
@@ -145,7 +149,7 @@
                         All collections in C# such as Lists, Dictionaries, and Arrays, are IEnumerables. This means that they inherit from the IEnumerable class. Arrays and Lists have a <code class="code">.Sort()</code> method, but because of the dual nature of Dictionaries, it won't know whether you want to sort it based upon the Key or the Value... and if your Array or List is of objects instead of numbers or strings, it won't know what to sort by. This is easily solved by using IEnumerable's <code class="code">OrderBy()</code> method such as <code class="code">.OrderBy(x => x.Name)</code>.
                     </p>
                     <figure>
-                        <img class="item-image" id="ienumerable-image" src="./images/ienumerable.jpg">
+                        <img class="item-image" id="ienumerable-image" src="./images/csharp/ienumerable.jpg">
                         <figcaption class="item-image-caption">
                             doggos by first letter of name sorted by age
                         </figcaption>
@@ -163,7 +167,7 @@
                         Although it is not possible to alter the contents of an IEnumerable, if the items inside it are complex objects (not strings or any of the other primative types), then they are pass-by-reference. When a pass-by-reference object has its value updated, it's value is updated across the board. As such, you may update their values in a subsequent list and see those results in the original IEnumerable:
                     </p>
                     <figure>
-                        <img class="item-image" id="ienumerable-image2" src="./images/change-ienumerable.jpg">
+                        <img class="item-image" id="ienumerable-image2" src="./images/csharp/change-ienumerable.jpg">
                         <figcaption class="item-image-caption">
                             all doggos shall henceforth known by the name "Fido"
                         </figcaption>
@@ -186,7 +190,7 @@
                         Query Expressions use actual SQL-like syntax in C# to accomplish the task:
                     </p>
                     <figure>
-                        <img class="item-image" id="linq-sql-image" src="./images/linq-sql.jpg">
+                        <img class="item-image" id="linq-sql-image" src="./images/csharp/linq-sql.jpg">
                         <figcaption class="item-image-caption">
                             SQL variety of LINQ
                         </figcaption>
@@ -203,7 +207,7 @@
                         Sometimes it is preferable to build a specific constructor for a more complex object that involves various sub-types... but for simple objects it is preferable to simply declare it as a basic class with parameters (or maybe even as a record) without an explicit constructor. Doing so allows for the instantiation of any object (Lists and Dictionaries included) to be done via a simple <code class="code">new Type(){MyParameter = myValue}</code> syntax.
                     </p>
                     <figure>
-                        <img class="item-image" id="object-instantiation-image" src="./images/object-instantiation.jpg">
+                        <img class="item-image" id="object-instantiation-image" src="./images/csharp/object-instantiation.jpg">
                         <figcaption class="item-image-caption">
                             Object Initialization Syntax
                         </figcaption>
@@ -220,7 +224,7 @@
                         The simplest thing to do here is to create your code as building blocks to your goal. Console apps are forced into using the Main method to execute their tasks. Generally speaking, that pattern applies here: if you are working inside a behemoth of a method due to it driving the functionality of that particular domain, making your new task be a simple method call inside that one may make it much more legible... then within that method (let's call it "GetMoreStuffDone()"), you make one data manipulation, then call to three brand new methods that you just created...  You would create those new methods because they're caring for the smaller tasks that are necessary along the way to meet your goal. Doing it in this manner will allow you to test more easily as you can validate each method individually if need be.
                     </p>
                     <figure>
-                        <img class="item-image" id="testability-dogs-image" src="./images/testability-dogs.jpg">
+                        <img class="item-image" id="testability-dogs-image" src="./images/csharp/testability-dogs.jpg">
                         <figcaption class="item-image-caption">
                             Can I get a 'Woof Woof'!
                         </figcaption>
@@ -234,6 +238,20 @@
                     <p>
                         Recommended test utilities include: <a class=inline-link href="https://www.youtube.com/watch?v=ub3P8c87cwk">XUnit</a>, <a class="inline-link" href="https://nsubstitute.github.io/help/getting-started/">NSubstitute</a>, <a class="inline-link" href="https://docs.fluentvalidation.net/en/latest/index.html">FluentValidation</a> and <a class="inline-link" href="https://fluentassertions.com/introduction">FluentAssertions</a></a>. See the <a class="inline-link" href="./testing/testing.html">Testing</a> page for more.
                     </p>
+                </article>
+                <article class="item-article" id="extension">
+                    <h2>
+                        Extension Methods
+                    </h2>
+                    <p>
+                        Extension methods are useful to allow for customizing how collections of a specific object type are handled and for maintaining server-side functionality separate from client-side models. It's accomplished by creating a static extension class along with a static method that utilizes the keyword 'this' along with the type and variable name in the parameters to that method. Example below:
+                    </p>
+                    <figure>
+                        <img class="item-image" src="images/CSharp/extension-method.jpg">
+                        <figcaption class="item-image-caption">
+                            An extension method that adds functionality to any List of type Dog.
+                        </figcaption>
+                    </figure>
                 </article>
                 <article class="item-article" id="multithreading">
                     <h2>
@@ -249,13 +267,13 @@
                         <strong>Handling Object Alterations:</strong> If you are modifying the same object with each iteration (for instance, adding or removing an item from a list) then it suddenly becomes critical that your list is thread-safe. This is generally accomplished with a <code class="code">ConcurrentBag</code> which is <a class="inline-link" href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.concurrent.concurrentbag-1?view=net-7.0">a collection that is designed precisely for this purpose</a>.
                     </p>
                     <figure>
-                        <img class="item-image" id="multithreading-image" src="./images/multithreading.jpg">
+                        <img class="item-image" id="multithreading-image" src="./images/csharp/multithreading.jpg">
                         <figcaption class="item-image-caption">
                             Dogs in a bag.. not the best idea.
                         </figcaption>
                     </figure>
                     <p>
-                        There is a way to explicitly call out the number of threads to be utilized, which is important to declare in some multithreading approaches. To manage the number of threads, <a class="inline-link" href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.paralleloptions.maxdegreeofparallelism?view=net-7.0">Parallel.MaxDegreeOfParallelism</a> should be incorporated.
+                        Explicitly declaration of the number of threads to be utilized is important in many scenarios and possible by incorporating <a class="inline-link" href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.paralleloptions.maxdegreeofparallelism?view=net-7.0">Parallel.MaxDegreeOfParallelism</a> into the approach.
                     </p>
                 </article>
             </section>

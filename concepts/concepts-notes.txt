@@ -3,4 +3,3 @@ DRY
 Design Patterns
 Feature Flags
 Generics
-Caching
