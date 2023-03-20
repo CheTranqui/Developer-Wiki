@@ -25,7 +25,7 @@
                     <a class="header-nav-link" href="../index.html">C#</a>
                 </li>
                 <li class="header-nav-item">
-                    <a class="header-nav-link" href="../concepts/concepts.html">Concepts</a>
+                    <a class="header-nav-link active-page" href="../concepts/concepts.html">Concepts</a>
                 </li>
                 <li class="header-nav-item">
                     <a class="header-nav-link" href="../git/git.html">Git</a>
@@ -75,80 +75,90 @@
             </h1>
             <section class="item-section">
                 <article class="item-article" id="brownfield">
-                    <h2>
-                        Brownfield Development
-                    </h2>
-                    <p>
-                        The primary concepts that change when working in an already established codebase are that the design pattern has already been chosen and every change that you make has ripple effects throughout the codebase, even if only affecting tests.
-                    </p>
-                    <p>
-                        To get a better idea of what's going on in the codebase and how it's tied together, place a debug breakpoint at the entry point and run the program. Follow it through startup and begin to interact with it, following each method. <strong>This should be done every time you begin a new PR,</strong> though with a more relevant breakpoint. With specific PRs the breakpoint should be the uppermost relevant entry point. Starting too close to where you think the change goes does not help nearly so much - maybe your guess was wrong and the change should be made much earlier in the process.
-                    </p>
-                    <p>
-                        Tests are important. Almost every PR should include at least one test, even if only to prove that the bug that was the impetus of this PR is fixed and will not occur again in the future.
-                    </p>
-                    <p>
-                        Lastly, take some time to figure out the design pattern in use. Oftentimes teams have both a preferred style and pattern. Take some time to familiarize yourself with how your teammates code and, with a little dose of wisdom, follow suit.
-                    </p>
+                    <div class="interior-article-wrapper">
+                        <h2>
+                            Brownfield Development
+                        </h2>
+                        <p>
+                            The primary concepts that change when working in an already established codebase are that the design pattern has already been chosen and every change that you make has ripple effects throughout the codebase, even if only affecting tests.
+                        </p>
+                        <p>
+                            To get a better idea of what's going on in the codebase and how it's tied together, place a debug breakpoint at the entry point and run the program. Follow it through startup and begin to interact with it, following each method. <strong>This should be done every time you begin a new PR,</strong> though with a more relevant breakpoint. With specific PRs the breakpoint should be the uppermost relevant entry point. Starting too close to where you think the change goes does not help nearly so much - maybe your guess was wrong and the change should be made much earlier in the process.
+                        </p>
+                        <p>
+                            Tests are important. Almost every PR should include at least one test, even if only to prove that the bug that was the impetus of this PR is fixed and will not occur again in the future.
+                        </p>
+                        <p>
+                            Lastly, take some time to figure out the design pattern in use. Oftentimes teams have both a preferred style and pattern. Take some time to familiarize yourself with how your teammates code and, with a little dose of wisdom, follow suit.
+                        </p>
+                    </div>
                 </article>
                 <article class="item-article" id="dry">
-                    <h2>
-                        Keep it DRY
-                    </h2>
-                    <p>
-                        DRY stands for Don't Repeat Yourself. One of the primary goals to bear in mind as you code is to keep your code as legible as possible without sacrificing too much performance.
-                    </p>
-                    <p>
-                        If you find yourself doing the same IF statement in two or three places within a method or a class, and it doesn't change during computation, then maybe it's worth doing the calculation initially and saving it as a well-named boolean to call to instead of redoing the calculation multiple times.
-                    </p>
-                    <p>
-                        The other general solution is to create a method that does what you need and call to the method, rather than placing the code directly inline.
-                    </p>
-                    <p>
-                        One example of this is when I once worked with both a single item as well as a collection of the same type. The solution was to create a method that did the item calculation, as well as a method that did nothing but iterate over the collection and call to that single method. Both methods had exactly the same name, but with different parameters and return types to account for the collection vs single item distinction.
-                    </p>
-                    <figure>
-                        <img class="item-image" id="dry-image" src="../images/Concepts/dry.jpg">
-                        <figcaption class="item-image-caption">
-                            Contrived example, but it should get the idea across
-                        </figcaption>
-                    </figure>
+                    <div class="interior-article-wrapper">
+                        <h2>
+                            Keep it DRY
+                        </h2>
+                        <p>
+                            DRY stands for Don't Repeat Yourself. One of the primary goals to bear in mind as you code is to keep your code as legible as possible without sacrificing too much performance.
+                        </p>
+                        <p>
+                            If you find yourself doing the same IF statement in two or three places within a method or a class, and it doesn't change during computation, then maybe it's worth doing the calculation initially and saving it as a well-named boolean to call to instead of redoing the calculation multiple times.
+                        </p>
+                        <p>
+                            The other general solution is to create a method that does what you need and call to the method, rather than placing the code directly inline.
+                        </p>
+                        <p>
+                            One example of this is when I once worked with both a single item as well as a collection of the same type. The solution was to create a method that did the item calculation, as well as a method that did nothing but iterate over the collection and call to that single method. Both methods had exactly the same name, but with different parameters and return types to account for the collection vs single item distinction.
+                        </p>
+                        <figure>
+                            <img class="item-image" id="dry-image" src="../images/Concepts/dry.jpg">
+                            <figcaption class="item-image-caption">
+                                Contrived example, but it should get the idea across
+                            </figcaption>
+                        </figure>
+                    </div>
                 </article>
                 <article class="item-article" id="designPatterns">
-                    <h2>
-                        Design Patterns
-                    </h2>
-                    <p>
-                        There are numerous design patterns that you'll encounter and no project is limited to just one, but the most important and basic one that I've discovered so far exists both on the back and front end. I knew it originally as "MVC", but it's much simpler than that: it's nothing more than a separation of concerns via adding a layer between an outside entity and your business logic which results in a 3-layer system.
-                    </p>
-                    <p>
-                        On the backend business logic goes in the Orchestrator and you manage acquisition of data within the Client (or 'Repo'), while you take incoming requests and send the results to the frontend via a Controller. In essence, the Controller is the layer between the Orchestrator and your frontend, while your Client is the layer between your Orchestrator and your database.
-                    </p>
-                    <p>
-                        On the frontend the data is acquired via an API call and translated into a Model. The model is then manipulated within the Controller and sent to the View. In this scenario the business logic is handled in the Controller while the View is the layer that exposes this to the customer, and the Model/API call is the acquisition of data. In each case there are three layers with business logic at the center and protected from the outside via a layer between.
-                    </p>
+                    <div class="interior-article-wrapper">
+                        <h2>
+                            Design Patterns
+                        </h2>
+                        <p>
+                            There are numerous design patterns that you'll encounter and no project is limited to just one, but the most important and basic one that I've discovered so far exists both on the back and front end. I knew it originally as "MVC", but it's much simpler than that: it's nothing more than a separation of concerns via adding a layer between an outside entity and your business logic which results in a 3-layer system.
+                        </p>
+                        <p>
+                            On the backend business logic goes in the Orchestrator and you manage acquisition of data within the Client (or 'Repo'), while you take incoming requests and send the results to the frontend via a Controller. In essence, the Controller is the layer between the Orchestrator and your frontend, while your Client is the layer between your Orchestrator and your database.
+                        </p>
+                        <p>
+                            On the frontend the data is acquired via an API call and translated into a Model. The model is then manipulated within the Controller and sent to the View. In this scenario the business logic is handled in the Controller while the View is the layer that exposes this to the customer, and the Model/API call is the acquisition of data. In each case there are three layers with business logic at the center and protected from the outside via a layer between.
+                        </p>
+                    </div>
                 </article>
                 <article class="item-article" id="featureFlags">
-                    <h2>
-                        Feature Flags
-                    </h2>
-                    <p>
-                        Feature Flags are an Azure concept. In essence they simply allow for you to build into your code a boolean validation using the FeatureManager. This is used in order to enable or disable a block of code, often surrounding the release of a new or time sensitive feature. I've used feature flags in the past when releasing a new non-critical feature into production testing, as well as when a feature is completed and ready to go, but cannot be released until after a specific date.
-                    </p>
-                    <p>
-                        The feature flag must first be defined within the ARM or Bicep template of the build pipeline, or manually within Azure. Once it's there then you may use <span class="code">IFeatureManager</span> such as <span class="code">if (await _featureManager.IsEnabledAsync(MyFlagName)){do stuff}</span>. It is recommended that you create a class explicitly to hold the names of each of your Feature Flags and any time that you refer to them you do so with the <span class=""code>NameOf:</span> convention. ...not quite sure why...
-                    </p>
-                    <p>
-                        More details may be found <a class="inline-link" href="https://learn.microsoft.com/en-us/azure/azure-app-configuration/use-feature-flags-dotnet-core?tabs=core5x">here</a>.
-                    </p>
+                    <div class="interior-article-wrapper">
+                        <h2>
+                            Feature Flags
+                        </h2>
+                        <p>
+                            Feature Flags are an Azure concept. In essence they simply allow for you to build into your code a boolean validation using the FeatureManager. This is used in order to enable or disable a block of code, often surrounding the release of a new or time sensitive feature. I've used feature flags in the past when releasing a new non-critical feature into production testing, as well as when a feature is completed and ready to go, but cannot be released until after a specific date.
+                        </p>
+                        <p>
+                            The feature flag must first be defined within the ARM or Bicep template of the build pipeline, or manually within Azure. Once it's there then you may use <span class="code">IFeatureManager</span> such as <span class="code">if (await _featureManager.IsEnabledAsync(MyFlagName)){do stuff}</span>. It is recommended that you create a class explicitly to hold the names of each of your Feature Flags and any time that you refer to them you do so with the <span class=""code>NameOf:</span> convention. ...not quite sure why...
+                        </p>
+                        <p>
+                            More details may be found <a class="inline-link" href="https://learn.microsoft.com/en-us/azure/azure-app-configuration/use-feature-flags-dotnet-core?tabs=core5x">here</a>.
+                        </p>
+                    </div>
                 </article>
                 <article class="item-article" id="generics">
-                    <h2>
-                        Generics
-                    </h2>
-                    <p>
-                        I'm not very familiar with Generics yet, but they're the <span class="code">List&lt;T&gt;</span> that you've seen in many tutorials. They seem to be utilized when you have the same series of actions inside a method that you want to execute for multiple object types. For instance, if you have multiple animals and simply want to get the average age of all pets. Ideally there would be a common interface that you could use as T, but if there is not a generic would work as well.
-                    </p>
+                    <div class="interior-article-wrapper">
+                        <h2>
+                            Generics
+                        </h2>
+                        <p>
+                            I'm not very familiar with Generics yet, but they're the <span class="code">List&lt;T&gt;</span> that you've seen in many tutorials. They seem to be utilized when you have the same series of actions inside a method that you want to execute for multiple object types. For instance, if you have multiple animals and simply want to get the average age of all pets. Ideally there would be a common interface that you could use as T, but if there is not a generic would work as well.
+                        </p>
+                    </div>
                 </article>
             </section>
         </main>
