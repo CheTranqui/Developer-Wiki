@@ -63,6 +63,9 @@
                         <a class="page-menu-links" href="#designPatterns">Design Patterns</a>
                     </li>
                     <li>
+                        <a class="page-menu-links" href="#dependencyInjection">Dependency Injection</a>
+                    </li>
+                    <li>
                         <a class="page-menu-links" href="#featureFlags">Feature Flags</a>
                     </li>
                     <li>
@@ -134,13 +137,29 @@
                         </p>
                     </div>
                 </article>
+                <article class="item-article" id="dependencyInjection">
+                    <div class="interior-article-wrapper">
+                        <h2>
+                            Dependency Injection
+                        </h2>
+                        <p>
+                            The concept is that each class is backed by an interface and we call to the interface itself, while setting a default implementation within the project. It's a roundabout way to execute the code, but allows for a simple, seamless experience in handling dependencies when creating and instantiating any particular class.
+                        </p>
+                        <p>
+                            The first step is to have a class, let's say <span class="code">Animal</span>. Any methods that you'll want to make available outside of Animal itself will then need to have their signatures included in an interface, <span class="code">IAnimal</span>. Then, within C# at least, you'll want to find the setup file, which is usually that projects Program.cs. The easiest way to do this is to do a ctrl+alt+f on "AddSingleton". Within that file you'll then want to add a line similar to:  <span class="code">services.AddSingleton<IAnimal, Animal>();</span>.
+                        </p>
+                        <p>
+                            Assuming all is correct, then in any class that you wish to refer to the Animal class you'll want to include a field (<span class="code">private readonly IAnimal Animal;</span>), add <span class="code">IAnimal animal</span> to your class constructor, and in the body of the constructor line them up with <span class="code">Animal = animal;</span>. As a result, throughout this class you may now refer to the Animal class via Animal.METHOD. <a class="inline-link" href="https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection">More details about Dependency Injection here</a>.
+                        </p>
+                    </div>
+                </article>
                 <article class="item-article" id="featureFlags">
                     <div class="interior-article-wrapper">
                         <h2>
                             Feature Flags
                         </h2>
                         <p>
-                            Feature Flags are an Azure concept. In essence they simply allow for you to build into your code a boolean validation using the FeatureManager. This is used in order to enable or disable a block of code, often surrounding the release of a new or time sensitive feature. I've used feature flags in the past when releasing a new non-critical feature into production testing, as well as when a feature is completed and ready to go, but cannot be released until after a specific date.
+                            Feature flags allow for you to build into your code a boolean validation using the FeatureManager. This is used in order to enable or disable a block of code, often surrounding the release of a new or time sensitive feature. I've used feature flags in the past when releasing a new non-critical feature into production testing, as well as when a feature is completed and ready to go, but cannot be released until after a specific date.
                         </p>
                         <p>
                             The feature flag must first be defined within the ARM or Bicep template of the build pipeline, or manually within Azure. Once it's there then you may use <span class="code">IFeatureManager</span> such as <span class="code">if (await _featureManager.IsEnabledAsync(MyFlagName)){do stuff}</span>. It is recommended that you create a class explicitly to hold the names of each of your Feature Flags and any time that you refer to them you do so with the <span class=""code>NameOf:</span> convention. ...not quite sure why...
