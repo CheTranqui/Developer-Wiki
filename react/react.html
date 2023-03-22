@@ -15,6 +15,7 @@
         <meta name="author" content="CheTranqui" />
         <title>Dev Notes</title>
         <link rel="stylesheet" href="../style.css" />
+        <link rel="stylesheet" href="style.css" />
     </head>
     <body>
         <header>
@@ -52,7 +53,7 @@
                 </h2>
                 <ol>
                     <li>
-                        <a class="page-menu-links" href="#csharp-item1">Comparisons</a>
+                        <a class="page-menu-links" href="#npm">NPM</a>
                     </li>
                     <li>
                         <a class="page-menu-links" href="#csharp-item2">Nulls</a>
@@ -72,6 +73,22 @@
                     C#
             </h1>
             <section class="item-section">
+                <article class="item-article" id="item1">
+                    <div class="interior-article-wrapper">
+                        <h2>
+                            <image class="item-image" id="npm-image" src="../images/NPM/npm.png">
+                        </h2>
+                        <p>
+                            NPM packages are detailed in the 'packages.json' file. The numbers such as <span class="code">^1.2.3</span> can be broken into: major version 1, minor version 2, patch version 3. The ^ at the beginning means that when you run NPM INSTALL or NPM UPDATE, it will automatically update to the newest minor and patch version. NPM will not automatically update major versions.
+                        </p>
+                        <p>
+                            Never run NPM UPDATE on its own. That would mass update every package. There are too many packages in a production system for that to be a wise choice. Instead do an NPM AUDIT and one-at-a-time run NPM UPDATE &lt;PACKAGE&gt;.
+                        </p>
+                        <p>
+                            ----stub----  Lots more info needed.
+                        </p>
+                    </div>
+                </article>
                 <article class="item-article" id="item1">
                     <div class="interior-article-wrapper">
                         <h2>
