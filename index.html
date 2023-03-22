@@ -81,7 +81,7 @@
                     </li>
                 </ol>
             </section>
-            <img class="page-icon" src="./images/CSharp/csharp-icon.png"/>
+            <img class="page-icon" src="./images/csharp/csharp-icon.png"/>
             <section class="item-section" >
                 <article class="item-article" id="comparison">
                     <div class="interior-article-wrapper">
@@ -111,7 +111,7 @@
                             A typical switch statement involves the <code class="code">switch (variable)</code> declaration. Switch expressions are more concise and make code more legible if each case will be returning something:
                         </p>
                         <figure>
-                            <img class="item-image" id="switch-image" src="./images/CSharp/switch.jpg">
+                            <img class="item-image" id="switch-image" src="./images/csharp/switch.jpg">
                             <figcaption class="item-image-caption">
                                 Teaching old dogs new tricks
                             </figcaption>
@@ -130,7 +130,7 @@
                             Nulls can be useful. They tell us when an operation failed. In order for an object to not be nullable it must be declared upon instantiation. This means it must be either defined immediately (even if it's just string.Empty), be assigned in that object's constructor, or new with .NET 7, it must be declared as "required" and a part of an incoming API.
                         </p>
                         <figure>
-                            <img class="item-image" src="./images/CSharp/nullability-warning.jpg">
+                            <img class="item-image" src="./images/csharp/nullability-warning.jpg">
                             <figcaption class="item-image-caption">
                                 Dereference of a possibly null reference = Microsoft speak for "it could be null, bro"
                             </figcaption>
@@ -156,7 +156,7 @@
                             All collections in C# such as Lists, Dictionaries, and Arrays, are IEnumerables. This means that they inherit from the IEnumerable class. Arrays and Lists have a <code class="code">.Sort()</code> method, but because of the dual nature of Dictionaries, it won't know whether you want to sort it based upon the Key or the Value... and if your Array or List is of objects instead of numbers or strings, it won't know what to sort by. This is easily solved by using IEnumerable's <code class="code">OrderBy()</code> method such as <code class="code">.OrderBy(x => x.Name)</code>.
                         </p>
                         <figure>
-                            <img class="item-image" id="ienumerable-image" src="./images/CSharp/ienumerable.jpg">
+                            <img class="item-image" id="ienumerable-image" src="./images/csharp/ienumerable.jpg">
                             <figcaption class="item-image-caption">
                                 doggos by first letter of name sorted by age
                             </figcaption>
@@ -174,7 +174,7 @@
                             Although it is not possible to alter the contents of an IEnumerable, if the items inside it are complex objects (not strings or any of the other primative types), then they are pass-by-reference. When a pass-by-reference object has its value updated, it's value is updated across the board. As such, you may update their values in a subsequent list and see those results in the original IEnumerable:
                         </p>
                         <figure>
-                            <img class="item-image" id="ienumerable-image2" src="./images/CSharp/change-ienumerable.jpg">
+                            <img class="item-image" id="ienumerable-image2" src="./images/csharp/change-ienumerable.jpg">
                             <figcaption class="item-image-caption">
                                 all doggos shall henceforth known by the name "Fido"
                             </figcaption>
@@ -199,7 +199,7 @@
                             Query Expressions use actual SQL-like syntax in C# to accomplish the task:
                         </p>
                         <figure>
-                            <img class="item-image" id="linq-sql-image" src="./images/CSharp/linq-sql.jpg">
+                            <img class="item-image" id="linq-sql-image" src="./images/csharp/linq-sql.jpg">
                             <figcaption class="item-image-caption">
                                 SQL variety of LINQ
                             </figcaption>
@@ -218,7 +218,7 @@
                             Sometimes it is preferable to build a specific constructor for a more complex object that involves various sub-types... but for simple objects it is preferable to simply declare it as a basic class with parameters (or maybe even as a record) without an explicit constructor. Doing so allows for the instantiation of any object (Lists and Dictionaries included) to be done via a simple <code class="code">new Type(){MyParameter = myValue}</code> syntax.
                         </p>
                         <figure>
-                            <img class="item-image" id="object-instantiation-image" src="./images/CSharp/object-instantiation.jpg">
+                            <img class="item-image" id="object-instantiation-image" src="./images/csharp/object-instantiation.jpg">
                             <figcaption class="item-image-caption">
                                 Object Initialization Syntax
                             </figcaption>
@@ -237,7 +237,7 @@
                             The simplest thing to do here is to create your code as building blocks to your goal. Console apps are forced into using the Main method to execute their tasks. Generally speaking, that pattern applies here: if you are working inside a behemoth of a method due to it driving the functionality of that particular domain, making your new task be a simple method call inside that one may make it much more legible... then within that method (let's call it "GetMoreStuffDone()"), you make one data manipulation, then call to three brand new methods that you just created...  You would create those new methods because they're caring for the smaller tasks that are necessary along the way to meet your goal. Doing it in this manner will allow you to test more easily as you can validate each method individually if need be.
                         </p>
                         <figure>
-                            <img class="item-image" id="testability-dogs-image" src="./images/CSharp/testability-dogs.jpg">
+                            <img class="item-image" id="testability-dogs-image" src="./images/csharp/testability-dogs.jpg">
                             <figcaption class="item-image-caption">
                                 Can I get a 'Woof Woof'!
                             </figcaption>
@@ -262,7 +262,7 @@
                             Extension methods are useful to allow for customizing how collections of a specific object type are handled and for maintaining server-side functionality separate from client-side models. It's accomplished by creating a static extension class along with a static method that utilizes the keyword 'this' along with the type and variable name in the parameters to that method. Example below:
                         </p>
                         <figure>
-                            <img class="item-image" src="images/CSharp/extension-method.jpg">
+                            <img class="item-image" src="images/csharp/extension-method.jpg">
                             <figcaption class="item-image-caption">
                                 An extension method that adds functionality to any List of type Dog.
                             </figcaption>
@@ -275,7 +275,7 @@
                             Multithreading and Concurrency
                         </h2>
                         <p>
-                            Multithreading in C# is pretty straight forward. There are several things to consider along the way, however:  1) will you be making alterations to the same object multiple times? 2) should I even bother?
+                            Multithreading in C# is pretty straight forward. There are several things to consider along the way, however:  1&#41; will you be making alterations to the same object multiple times? 2&#41; should I even bother?
                         </p>
                         <p>
                             <strong>Should I Build In Multithreading:</strong> In modern computing it is generally not necessary. Most hosting scenarios are sufficiently powerful that though it be available, there's no real need to take advantage of multithreading. The cases in which it is of value is when it is a fairly expensive or time consuming process, for instance if you call to an external API multiple times in order to accomplish your greater task then sending all of those calls out at once would allow you to truncate the wait from however many down to just the time it takes to make one call as they happen concurrently.
@@ -284,7 +284,7 @@
                             <strong>Handling Object Alterations:</strong> If you are modifying the same object with each iteration (for instance, adding or removing an item from a list) then it suddenly becomes critical that your list is thread-safe. This is generally accomplished with a <code class="code">ConcurrentBag</code> which is <a class="inline-link" href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.concurrent.concurrentbag-1?view=net-7.0">a collection that is designed precisely for this purpose</a>.
                         </p>
                         <figure>
-                            <img class="item-image" id="multithreading-image" src="./images/CSharp/multithreading.jpg">
+                            <img class="item-image" id="multithreading-image" src="./images/csharp/multithreading.jpg">
                             <figcaption class="item-image-caption">
                                 Dogs in a bag.. not the best idea.
                             </figcaption>
