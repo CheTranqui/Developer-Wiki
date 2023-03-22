@@ -16,7 +16,7 @@
 }
 
 @font-face { font-family: 'Martinhand';
-    src: url('Martinhand3.woff2'),
+    src: url('../Martinhand3.woff2'),
     format("woff2");
     font-weight: 500;
     font-style: normal;
