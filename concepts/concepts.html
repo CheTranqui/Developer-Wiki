@@ -71,6 +71,9 @@
                     <li>
                         <a class="page-menu-links" href="#generics">Generics</a>
                     </li>
+                    <li>
+                        <a class="page-menu-links" href="#controllers">Controllers</a>
+                    </li>
                 </ol>
             </section>
             <h1 class="page-title-h1 messyHandwriting">
@@ -179,7 +182,47 @@
                         </p>
                     </div>
                 </article>
+                <article class="item-article" id="dry">
+                    <div class="interior-article-wrapper">
+                        <h2>
+                            Controllers
+                        </h2>
+                        <p>
+                            In C# a controller should always inherit from <span class="code">ControllerBase</span>. Along with this, the class should be decorated as an ApiController and have a route declared. The route will assume itself to be your "baseUrl/classRoute". All methods within the controller are your individual endpoints. Each end-point must have its own route decoration. The url of the route endpoint is then added to the above making the end url "baseUrl/classRoute/methodRoute".
+                        </p>
+                        <p>
+                            Each controller in C# should return an IActionResult (or more likely, <span class="code">Task&lt;IActionResult&gt;</span>). This allows us to utilize the <span class="code">BadRequest(errorMessage)</span> and <span class="code">Ok(results)</span> responses which automatically sends a 400 or 200 to the front end. While it allows us to modify exactly what codes and messages we send to the front end, it also requires us to do so - for instance, a 500 will never be sent via BadRequest or Ok.
+                        </p>
+                        <figure>
+                            <img class="item-image" id="dry-image" src="../images/concepts/controller.jpg">
+                            <figcaption class="item-image-caption">
+                                A basic, typical C# controller endpoint.
+                            </figcaption>
+                        </figure>
+                        <p>
+                            In the above example the route is <span class="code">/zip?00000</span>. The <span class="code">string zip</span> method parameter is automatically pulled out of the http request. Placing the call to your service (in this case, GetByZip) into a Try/Catch allows us to catch anything that is thrown by the back end. We can then evaluate that exception's details (statusCode, message, etc) and determine precisely how to handle it and exactly what to send to the front end - in this case it's a basic 'BadRequest' (i.e. 400) that passes along the message created elsewhere. If it's successful, however, it returns an "Ok", which equates to a 200, along with whatever object we put in the parenthesis... which must fulfill the contract.
+                        </p>
+                        <p>
+                            The downside of this approach is that it's not necessarily clear exactly what the shape of the return object is. It is not declared within the method signature, nor is it clear in the return line. As a result, I prefer to clearly type all C# (avoid the use of VAR). Another way to overcome this is by adding XML Summary and Example comments.
+                        </p>
+                    </div>
+                </article>
             </section>
         </main>
     </body>
 </html>
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Developer-Wiki/concepts.html at main · CheTranqui/Developer-Wiki
