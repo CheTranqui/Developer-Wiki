@@ -1,3 +1,15 @@
+.page-title-h1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 1rem;
+}
+
+#react-image{
+    height: 4rem;
+}
+
 #npm-image{
     height: 3rem;
 }
