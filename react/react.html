@@ -56,16 +56,13 @@
                         <a class="page-menu-links" href="#npm">NPM</a>
                     </li>
                     <li>
-                        <a class="page-menu-links" href="#csharp-item2">Nulls</a>
+                        <a class="page-menu-links" href="#data-management">Data Mgmt</a>
                     </li>
                     <li>
-                        <a class="page-menu-links" href="#csharp-item3">IEnumerables</a>
+                        <a class="page-menu-links" href="#useState">State: useState</a>
                     </li>
                     <li>
-                        <a class="page-menu-links" href="#csharp-item4">LINQ</a>
-                    </li>
-                    <li>
-                        <a class="page-menu-links" href="#csharp-item5">Testability</a>
+                        <a class="page-menu-links" href="#useEffect">State: useEffect</a>
                     </li>
                 </ol>
             </section>
@@ -86,26 +83,91 @@
                             Never run NPM UPDATE on its own. That would mass update every package. There are too many packages in a production system for that to be a wise choice. Instead do an NPM AUDIT and one-at-a-time run NPM UPDATE &lt;PACKAGE&gt;.
                         </p>
                         <p>
-                            Scoped Packages:  <div class='code'>npm install @domain/packageName</div>
+                            Scoped Packages:  <code class='code'>npm install @domain/packageName</code>
                         </p>
                     </div>
                 </article>
-                <article class="item-article" id="item1">
+                <article class="item-article" id="data-management">
                     <div class="interior-article-wrapper">
                         <h2>
-                            First Concept
+                            Data Management
                         </h2>
                         <p>
-                            Stuff about first concept
+                            Data management is the more challenging parts of React. The two most common strategies are prop drilling and the use of context.
                         </p>
                         <figure>
-                            <img class="item-image" src="">
+                            <img class="item-image data-management-image" src="../images/react/prop-drilling-image.jpg">
                             <figcaption class="item-image-caption">
-                                item image caption
+                                Prop drilling is acceptable.. until it's not.
                             </figcaption>
                         </figure>
                         <p>
-                            More stuff about first concept.
+                            Prop drilling is the simplest form of passing data from one component to another. It's simply providing a parameter to the constructor (usually "prop", but you can make it multiple params), and defining that param upon instantiation of the component, in this case we're defining the 'project' as <code class="code">projects[currentSlide]</code>.
+                        </p>
+                        <p>
+                            If you are prop drilling more than one layer deep, you should instead consider the use of <code class="code">Context</code>. Context is, in essence, a specific javascript file that allows you to centralize your logic and export it as if it were a component so that you may import it into any other component within your application. This is the preferred method of data management in React. Find more information about the <code class='code'>useContext hook</code> <a class="inline-link" href=https://react.dev/reference/react/useContext>here</a>.
+                        </p>
+                    </div>
+                </article>
+                <article class="item-article" id="useState">
+                    <div class="interior-article-wrapper">
+                        <h2>
+                            State: useState
+                        </h2>
+                        <p>
+                            State is the most challenging part of React, but it is also what powers React's greatest assets: useState and useEffect.
+                        </p>
+                        <figure>
+                            <img class="item-image useState-image" src="../images/react/useState-image.jpg">
+                            <figcaption class="item-image-caption">
+                                It must be imported within brackets above, and utilized as a <code class="code">const</code>.
+                            </figcaption>
+                        </figure>
+                        <p>
+                            The useState hook is the most commonly used hook in React. It's key characteristics are:
+                            <ul>
+                                <li>
+                                    it's always a const
+                                </li>
+                                <li>
+                                    first variable is the name of the actual object you are defining ('projects' in the example above)
+                                </li>
+                                <li>
+                                    second variable is the exact same name with the word "set" before it ('setProjects' in the example above)
+                                </li>
+                                <li>
+                                    within the parenthesis of the <code class="code">useState</code> function you may optionally declare the default value for the defined state (an empty array in the case above, or the index 0 for the currentSlide state)
+                                </li>
+                            </ul>
+                        </p>
+                        <p>
+                            React enforces rules on exactly when state can change. The best way to manage it that I have found as yet is to handle state changing as one event, and using a useEffect hook to listen for the change and handle the event that you wish to kick off as a result of it. You will never update the value of <code class="code">projects</code> directly, but rather manage it via the <code class="code">setProjects</code> function wherein you pass the new value. This is often done via use of the spread operator for more complex objects.
+                        </p>
+                        <figure>
+                            <img class="item-image useState-spread-image" src="../images/react/useState-spread-image.jpg">
+                            <figcaption class="item-image-caption">
+                                This updates the "state" variable by using the setState method, setting the value to a new object named "foo" which consists of the former "foo" object, while updating foo.c to 'updated value', thus only adjusting c while leaving the rest of foo intact.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </article>
+                <article class="item-article" id="useState">
+                    <div class="interior-article-wrapper">
+                        <h2>
+                            State: useEffect
+                        </h2>
+                        <p><code class="code">useEffect</code> interacts with state to allow for a more dynamic application.</p>
+                        <figure>
+                            <img class="item-image useEffect-image" src="../images/react/useEffect-image.jpg">
+                            <figcaption class="item-image-caption">
+                                Translation:  if <code class="code">currentSlide</code> changes, check if projects is less than 5 long, if it is then execute the <code class="code">fetchProjects</code> function. 
+                            </figcaption>
+                        </figure>
+                        <p>
+                            The useEffect hook is built of two parts: the method and the state for it to watch. The array at the bottom that contains <code class="code">[currentSlide]</code> is an array of any value which upon change will trigger the useEffect hook. In this scenario, when currentSlide changes, we check if we shouldn't fetchProjects.
+                        </p>
+                        <p>
+                            You may put multiple variables/objects in the array, separated by commas. It is also very common to have multiple useEffect hooks, with distinct dependencies, in the same component. This is especially true for SPAs.
                         </p>
                     </div>
                 </article>

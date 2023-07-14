@@ -13,3 +13,15 @@
 #npm-image{
     height: 3rem;
 }
+
+.data-management-image{
+    height: 20rem;
+}
+
+.useEffect-image, .useState-image {
+    height: 7rem;
+}
+
+.useState-spread-image{
+    height: 5rem;
+}
